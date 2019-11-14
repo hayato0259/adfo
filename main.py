@@ -12,7 +12,7 @@ def show():
 
 @app.route("/")
 def main():
-    return render_template("index.html")
+    return render_template("index.html", s=show())
 
 if __name__ == "__main__":
     print('on hello')
