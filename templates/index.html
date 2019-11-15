@@ -1,28 +1,37 @@
 <!doctype html>
 <html>
 <head>
+    <script src="/static/js/vue.js"></script>
     <title>Hello</title>
-    <style>
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-        body {
-            animation-name: fadeIn;
-            animation-duration: 0.4s;
-            animation-fill-mode: both;
-        }
-    </style>
+    <link rel="stylesheet" href="/static/css/style.css?p={{p}}">
 </head>
 <body>
-    Hi
-    <p>
-        {{s}}
-    </p>
+    <div id="app">
+        <label id="dd">
+            <span>ファイルをドロップ</span>
+            <input type="file" multiple id="file" @dragover="clear" @click="clear" @change="change"/>
+        </label>
+        <div class="files">
+            <iframe src="/result" name="result"></iframe>
+            <ul>
+                <li v-for="file in files">
+                    ${ file.name }  ${ file.content }
+                </li>
+            </ul>
+            <form id="go" action="/result" method="POST" target="result" name="go">
+                <template v-for="(file, index) in files">
+                    <input class="hide" type="text" :name="index" :value="file.path">
+                </template>
+                <input type="submit" value="GO">
+            </form>
+            <form id="save" action="/save" method="POST" name="save">
+                <template v-for="(file, index) in files">
+                    <input class="hide" type="text" :name="index" :value="file.path">
+                </template>
+                <input type="submit" value="SAVE" download="ファイル名.拡張子">
+            </form>
+        </div>
+    </div>
+    <script src="/static/js/main.js?p={{p}}"></script>
 </body>
 </html>

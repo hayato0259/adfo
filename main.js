@@ -16,8 +16,9 @@ app.on('ready', function () {
     var mainAddr = 'http://localhost:5000';
 
     var openWindow = function () {
-        mainWindow = new BrowserWindow({ width: 400, height: 300 });
+        mainWindow = new BrowserWindow({ frame: false, width: 1024, height: 640 });
         mainWindow.loadURL(mainAddr);
+        // mainWindow.openDevTools();
 
         // 終了処理
         mainWindow.on('closed', function () {

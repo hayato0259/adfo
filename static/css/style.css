@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    -webkit-app-region: drag;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    background: #193549;
+    color: #fff;
+}
+
+#app {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+}
+
+.files *,
+label#dd * {
+    -webkit-app-region: no-drag;
+}
+
+label#dd {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 512px;
+    border: 8px solid #eeeeee;
+    border-radius: 8px;
+    /* background: #000; */
+}
+
+label#dd span {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input#file {
+    display: block;
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: button;
+    font-size: 0;
+    border-width: 0;
+    opacity: 0;
+}
+
+input.hide {
+    display: none;
+}
+
+.files {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 16px;
+}
+
+.files iframe {
+    width: 100%;
+    height: 50%;
+}
+
+.files form#go,
+.files form#save {
+    display: block;
+    width: 100%;
+}
+
+.files form#go {
+    margin-top: auto;
+}
+
+.files form#save {
+    margin-top: 8px;
+}
+
+#go input[type="submit"],
+#save input[type="submit"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    appearance: none;
+}
