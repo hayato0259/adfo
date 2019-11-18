@@ -1,7 +1,8 @@
-var example1 = new Vue({
+var App = new Vue({
     el: '#app',
     data: {
         files: [],
+        dragging: false,
     },
     delimiters: ['${', '}'],
     methods: {
@@ -20,6 +21,9 @@ var example1 = new Vue({
         },
         clear: function() {
             document.getElementById("file").value = ""
+        },
+        remove: function(n) {
+            this.files.splice(n, 1);
         }
     }
 })

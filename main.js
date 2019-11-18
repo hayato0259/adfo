@@ -1,4 +1,3 @@
-// Electron側の初期設定
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
@@ -14,7 +13,12 @@ app.on('ready', function () {
     var mainAddr = 'http://localhost:5000';
 
     var openWindow = function () {
-        mainWindow = new BrowserWindow({ frame: false, width: 1024, height: 640 });
+        mainWindow = new BrowserWindow({
+            frame: false,
+            width: 1024,
+            height: 640,
+            backgroundColor: '#122738',
+        });
         mainWindow.loadURL(mainAddr);
         // mainWindow.openDevTools();
 

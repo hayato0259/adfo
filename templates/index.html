@@ -7,28 +7,41 @@
 </head>
 <body>
     <div id="app">
-        <label id="dd">
-            <span>ファイルをドロップ</span>
-            <input type="file" multiple id="file" @dragover="clear" @click="clear" @change="change"/>
-        </label>
+        <div class="drop">
+            <label id="dd" @dragover="dragging=true" @dragleave="dragging=false" :class="{dragging: dragging}" >
+                <span class="dropHere" :class="{hide: files.length}">
+                    ファイルをドロップ
+                    <span>
+                        またはクリック
+                    </span>
+                </span>
+                <input type="file" multiple id="file" @dragover="clear" @click="clear" @change="change"/>
+            </label>
+            <ul class="fileList" :class="{show: files.length}">
+                <li v-for="(file, index) in files">
+                    <span>
+                        ${ file.name }
+                    </span>
+                    <button class="remove" @click="remove(index)">
+                        remove
+                    </button>
+                </li>
+                <span class="add">+</span>
+            </ul>
+        </div>
         <div class="files">
             <iframe src="/result" name="result"></iframe>
-            <ul>
-                <li v-for="file in files">
-                    ${ file.name }  ${ file.content }
-                </li>
-            </ul>
-            <form id="go" action="/result" method="POST" target="result" name="go">
+            <form id="preview" action="/result" method="POST" target="result" name="preview">
                 <template v-for="(file, index) in files">
                     <input class="hide" type="text" :name="index" :value="file.path">
                 </template>
-                <input type="submit" value="GO">
+                <input type="submit" value="PREVIEW" :disabled="!files.length">
             </form>
             <form id="save" action="/save" method="POST" name="save">
                 <template v-for="(file, index) in files">
                     <input class="hide" type="text" :name="index" :value="file.path">
                 </template>
-                <input type="submit" value="SAVE" download="ファイル名.拡張子">
+                <input type="submit" value="SAVE" :disabled="!files.length">
             </form>
         </div>
     </div>
