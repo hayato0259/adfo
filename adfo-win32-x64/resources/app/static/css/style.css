@@ -1,0 +1,235 @@
+*::-webkit-scrollbar{
+  width: 8px;
+}
+*::-webkit-scrollbar-track{
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+}
+*::-webkit-scrollbar-thumb{
+    box-shadow: inset 0 0 2px #777;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+button,
+input[type="submit"] {
+    outline: none;
+    background: none;
+    border: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+html {
+    height: 100%;
+    -webkit-app-region: drag;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    background: #122738;
+    color: #fff;
+}
+
+#app {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+}
+
+.files *,
+.drop * {
+    -webkit-app-region: no-drag;
+}
+
+.drop {
+    position: relative;
+    width: 100%;
+    max-width: 512px;
+    border: 12px solid #193549;
+    border-radius: 16px;
+    background: #193549;
+    height: 100%;
+    overflow: auto;
+}
+
+label#dd {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+    margin: 0 auto;
+    /* border: 8px solid #eeeeee; */
+    transition: 0.4s;
+}
+
+label#dd.dragging {
+    opacity: 0.5;
+    /* border-color: red; */
+}
+
+label#dd span.dropHere.hide {
+    display: none;
+}
+
+label#dd span.dropHere {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+label#dd span.dropHere > span {
+    position: static;
+    font-size: 0.8em;
+}
+
+input#file {
+    display: block;
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: button;
+    font-size: 0;
+    border-width: 0;
+    opacity: 0;
+}
+
+input.hide {
+    display: none;
+}
+
+.files {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 16px;
+}
+
+.files iframe {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    margin-bottom: 8px;
+}
+
+.files form#preview,
+.files form#save {
+    display: block;
+    width: 100%;
+}
+
+.files form#preview {
+    margin-top: auto;
+}
+
+.files form#save {
+    margin-top: 8px;
+}
+
+#preview input[type="submit"]:disabled,
+#save input[type="submit"]:disabled {
+    opacity: 0.7;
+}
+
+#preview input[type="submit"],
+#save input[type="submit"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 56px;
+    border-radius: 4px;
+    box-shadow:1px 1px 4px 0px rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+#preview input[type="submit"]:active,
+#save input[type="submit"]:active {
+    transform: translate(0,1px);
+}
+
+#preview input[type="submit"] {
+    background: #51aded;
+}
+
+#save input[type="submit"] {
+    background: #ed5153;
+}
+
+.fileList.show {
+    display: flex;
+}
+
+.fileList {
+    display: none;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+}
+
+.fileList li {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    background: #122637;
+    padding: 0 12px;
+    z-index: 10;
+}
+
+.fileList li + li {
+    margin-top: 8px;
+}
+
+.fileList li button.remove {
+    color: #707d87;
+    cursor: pointer;
+}
+
+.fileList li button.remove:hover {
+    color: #fff;
+}
+
+span.add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    margin: 12px auto;
+    border-radius: 50%;
+    background: #2aaae2;
+    box-shadow:1px 1px 4px 0px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 42px;
+    font-weight: bold;
+    cursor: pointer;
+}
