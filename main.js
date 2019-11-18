@@ -27,7 +27,6 @@ app.on('ready', function () {
     var startUp = function () {
         rq(mainAddr)
             .then(function (htmlString) {
-                console.log('server started');
                 openWindow();
             })
             .catch(function (err) {
