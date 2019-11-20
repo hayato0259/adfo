@@ -3,9 +3,10 @@
 <head>
     <script src="/static/js/vue.js"></script>
     <title>adfo</title>
-    <link rel="stylesheet" href="/static/css/style.css?p={{p}}">
+    <link rel="stylesheet" href="/static/css/common.css?p={{p}}">
 </head>
 <body>
+    <a id="back" href="/"></a>
     <div id="app">
         <div class="drop">
             <label id="dd" @dragover="dragging=true" @dragleave="dragging=false" :class="{dragging: dragging}" >

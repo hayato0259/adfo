@@ -59,6 +59,10 @@ body {
     -webkit-app-region: no-drag;
 }
 
+a,a:hover,a:active,a:visited {
+    -webkit-app-region: no-drag;
+}
+
 .drop {
     position: relative;
     width: 100%;

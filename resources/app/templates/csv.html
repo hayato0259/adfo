@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <title>adfo</title>
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/axios.js"></script>
+    <script src="/static/js/vue.js"></script>
+    <link rel="stylesheet" href="/static/css/common.css?p={{p}}">
+    <link rel="stylesheet" href="/static/css/csv.css?p={{p}}">
+</head>
+<body>
+    <a id="back" href="/"></a>
+    <div id="app">
+        <div class="drop">
+            <label id="dd" @dragover="dragging=true" @dragleave="dragging=false" :class="{dragging: dragging, hide: file}">
+                <span class="dropHere" :class="{hide: file}">
+                    ファイルをドロップ
+                    <span>
+                        またはクリック
+                    </span>
+                </span>
+                <input type="file" multiple id="file" @change="change" @dragover="clear"/>
+            </label>
+            <ul class="fileList" :class="{show: file}">
+                <li>
+                    <span>
+                        ${ file.name }
+                    </span>
+                    <button class="remove" @click="remove">
+                        remove
+                    </button>
+                </li>
+            </ul>
+            <form action="/csvtohtml" method="POST" :class="{hide: !file}" target="result">
+                <div class="config" v-for="cell in header">
+                    <h2>
+                        ${cell}
+                    </h2>
+                    <p class="input">
+                        <input type="text" name="tags" placeholder="タグ">
+                        <input type="text" name="attrname" placeholder="属性名">
+                    </p>
+                </div>
+                <input type="text" class="hide" name="path" :value="file.path">
+                <input type="submit" value="GO">
+            </form>
+        </div>
+        <div class="files">
+            <iframe src="/csvtohtml" name="result"></iframe>
+        </div>
+    </div>
+    <script src="/static/js/csv.js?p={{p}}"></script>
+</body>
+</html>
