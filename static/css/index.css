@@ -1,0 +1,77 @@
+@charset "utf-8";
+
+.apps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.apps li {
+    background: #ffd700;
+    width: 30%;
+    border-radius: 50%;
+    box-shadow:1px 1px 4px 0px rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+}
+
+.apps li:hover {
+    width: 35%;
+    transition-duration: 0.3;
+}
+
+.apps li:active {
+    width: 33%;
+    transition-duration: 0.1s;
+}
+
+.apps li + li {
+    margin-left: 24px;
+}
+
+.apps li a {
+    position: relative;
+    display: block;
+    padding-top: 100%;
+}
+
+.apps li a span {
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.apps li a span.label {
+    width: 200%;
+    color: #fff;
+    overflow: visible;
+    top: auto;
+    bottom: -2em;
+    left: -50%;
+    right: -50%;
+    text-align: center;
+    font-size: 16px;
+    opacity: 0;
+}
+
+.apps li:hover a span.label {
+    font-size: 20px;
+    opacity: 1.0;
+    transition: 0.3s;
+}
+
+.apps li a img {
+    width: 100%;
+    height: 100%;
+}
+
+.apps li.csv {
+    background: #9b59b6;
+}
+
+
+

@@ -11,7 +11,7 @@ app.on('ready', function () {
     var subpy = require('child_process').spawn('python', ['./main.py']);
     // var subpy = require('child_process').spawn('python', ['./resources/app/main.py']);
     var rq = require('request-promise');
-    var mainAddr = 'http://localhost:5000';
+    var mainAddr = 'http://localhost:5000/';
 
     var openWindow = function () {
         mainWindow = new BrowserWindow({
@@ -21,7 +21,7 @@ app.on('ready', function () {
             backgroundColor: '#122738',
         });
         mainWindow.loadURL(mainAddr);
-        // mainWindow.openDevTools();
+        mainWindow.openDevTools();
 
         mainWindow.on('closed', function () {
             mainWindow = null;

@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+.config {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 0.5em;
+    padding: 0.4em;
+}
+
+.config:first-child {
+    background: #122637;
+}
+
+.config:first-child h2::after {
+    content: "この要素でラップされます";
+    font-size: 11px;
+    color: #787878;
+    margin-left: 0.5em;
+}
+
+.config h2 {
+    margin-bottom: 0.2em;
+}
+
+.config .input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+}
+
+.config .input input {
+    display: block;
+    width: 100%;
+    line-height: 2.0;
+    border: none;
+    outline: none;
+    background: #193549;
+    color: #fff;
+    padding: 0 1.25em;
+}
+
+.config .input input[name="tags"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 20%;
+}
+
+
+
+
+
+
