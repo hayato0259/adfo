@@ -8,8 +8,7 @@ app.on('window-all-closed', function () {
 });
 
 app.on('ready', function () {
-    var subpy = require('child_process').spawn('python', ['./main.py']);
-    // var subpy = require('child_process').spawn('python', ['./resources/app/main.py']);
+    var subpy = require('child_process').spawn('python', ['./resources/app/main.py']);
     var rq = require('request-promise');
     var mainAddr = 'http://localhost:5000/';
 
