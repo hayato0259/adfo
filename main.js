@@ -21,7 +21,7 @@ app.on('ready', function () {
             backgroundColor: '#122738',
         });
         mainWindow.loadURL(mainAddr);
-        mainWindow.openDevTools();
+        // mainWindow.openDevTools();
 
         mainWindow.on('closed', function () {
             mainWindow = null;
