@@ -18,6 +18,10 @@
     user-select: none;
 }
 
+a {
+    cursor: inherit;
+}
+
 button,
 input[type="submit"] {
     outline: none;
@@ -268,12 +272,16 @@ span.add {
     align-items: center;
     width: 24px;
     height: 48px;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.3);
     z-index: 99;
 }
 
 #back:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+#back:active {
+    background: rgba(0, 0, 0, 1.0);
 }
 
 #back::after {
