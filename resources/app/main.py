@@ -38,8 +38,11 @@ def csvoutput():
         attrnames = ['class' if '' == s else s for s in attrnames]
         path = request.form['path']
         csv_file = open(path, "r", encoding="utf-8", errors="", newline="")
-        f = csv.reader(csv_file, delimiter=",", doublequote=True, lineterminator="\r\n", quotechar='"', skipinitialspace=True)
-        html = csvtohtml(f, attrnames, tags)
+        f = csv.reader(csv_file, delimiter=",", doublequote=True, lineterminator="", quotechar='"', skipinitialspace=True)
+        if request.form['target'] == "vuedata":
+            html = csvtovue(f)
+        else :
+            html = csvtohtml(f, attrnames, tags)
         return Response(html, mimetype='text/plain')
     else:
         return Response("NO DATA", mimetype='text/plain')
@@ -63,9 +66,25 @@ def csvtohtml(f, attrnames, tags):
             attrs = {
                 attrname: head
             }
-            cell = cell.replace('\r\n','<br>')
+            cell = cell.replace('\r\n', '<br>')
+            cell = cell.replace('\n','<br>')
             html += wraphtml(cell, tag, attrs)
         html += wraphtml ("", tags[0], "", "close")
+    return html
+
+def csvtovue(f):
+    html = ""
+    header = next(f)
+    for row in f:
+        html += "{\r\n"
+        for index, cell in enumerate(row):
+            if cell == "":
+                continue
+            head = header[index]
+            cell = cell.replace('\r\n','<br>')
+            cell = cell.replace('\n','<br>')
+            html += '   '+head+': "'+cell+'",\r\n'
+        html += "},\r\n"
     return html
 
 def wraphtml(html="", tag="p", attrs="", part=False):
