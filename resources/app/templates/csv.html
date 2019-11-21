@@ -32,7 +32,11 @@
                 </li>
             </ul>
             <form action="/csvtohtml" method="POST" :class="{hide: !file}" target="result">
-                <div class="config" v-for="cell in header">
+                <select name="target" v-model="target">
+                    <option value="html">HTML</option>
+                    <option value="vuedata">Vue Data</option>
+                </select>
+                <div class="config" v-for="cell in header" v-if="target == 'html'">
                     <h2>
                         ${cell}
                     </h2>

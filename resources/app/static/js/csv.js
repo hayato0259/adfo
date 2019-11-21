@@ -1,6 +1,7 @@
 var App = new Vue({
     el: '#app',
     data: {
+        target: 'html',
         file: false,
         dragging: false,
         header: null,
